@@ -1,0 +1,312 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="javat" href=" slidshow.js">
+  
+</head>
+
+<body>
+    <div>
+        <!---------- Logo and Search Panel HTML Code Starts --------->
+        <div class="width-100 search-panel">
+            <div class="container1">
+                <div class="width-20">
+                    <img src="pic/logo.jpg" style="height: 50;">
+                </div>
+                <div class="width-50">
+                    <input class="search-textbox" type="text" Placeholder="Search for products, brand and more">
+                    <button class="search-button">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="width-30">
+                    <ul class="cart-sect">
+                        <!-- <li>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <a class="head1mr" href="#">Whislist</a>
+          </li> -->
+                        <li>
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <a href="#">Login & Signup</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <a href="#">Cart (0)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!---------- Logo and Search Panel HTML Code Ends --------->
+
+        <!---------- Main Menu HTML Code Starts --------->
+        <div class="width-100">
+            <div class="container1">
+                <ul class="main-menu">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Men</a>
+                    </li>
+                    <li>
+                        <a href="#">Women</a>
+                    </li>
+                    <li>
+                        <a href="#">Kids</a>
+                    </li>
+                    <li>
+                        <a href="#">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---------- Main Menu HTML Code Ends --------->
+    </div>
+
+
+    <div class="int">
+        <main class="container">
+
+            <!-- Left Column / Headphones Image -->
+            <div class="Column">
+
+
+                <div class="left-column">
+                    <!-- Container for the image gallery -->
+                    <div class="container3">
+
+                        <!-- Full-width images with number text -->
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="pic\pure extra (men).webp" style="width:100%;height: 200%; ">
+                        </div>
+
+                        <div class="mySlides">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="pic\pure extra1 (men).webp" style="width:100%;height: 200%;">
+                        </div>
+
+
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                        <!-- Image text -->
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
+
+                        <!-- Thumbnail images -->
+                        <div class="row">
+                            <div class="column">
+                                <img class="demo cursor" src="pic\pure extra (men).webp" style="width:100%"
+                                    onclick="currentSlide(1)" >
+                            </div>
+                            <div class="column">
+                                <img class="demo cursor" src="pic\pure extra1 (men).webp" style="width:100%"
+                                    onclick="currentSlide(2)" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<script>
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+
+
+
+
+
+
+
+                <!-- Right Column -->
+                <div class="right-column">
+
+                    <!-- Product Description -->
+                    <div class="product-description">
+                        <span>Men</span>
+                        <h1>Cotton Blend Textured Shawl Collar Cardigan</h1>
+                    </div>
+                    <!-- Product Pricing -->
+                    <div class="product-price">
+                        <span>Rs. 2000 /-</span>
+                        <a href="#" class="tryon-btn">Try On!</a>
+                    </div>
+                    <!-- Product Configuration -->
+                    <div class="product-configuration">
+
+
+                        <!-- Cable Configuration -->
+                        </br>
+                        <div class="cable-config">
+                            <span>Size</span>
+
+                            <div class="cable-choose">
+                                <button>XS</button>
+                                <button>S</button>
+                                <button>M</button>
+                                <button>L</button>
+                                <button>XL</button>
+                                <button>XLL</button>
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        <a href="#" class="cart-btn" style="width: 82%;text-align: center;">Add to cart</a></br>
+                    </div>
+
+                    <div>
+                        </br>
+
+                        <!--product descpition -->
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+                        <button class="accordion">Description</button>
+                        <div class="panel">
+                            <p>This classic cotton-blend cardigan is great for when you need that extra layer. Design
+                                features handy integral pockets, a button fastening and a shawl-style collar for a cosy
+                                feel. Textured for a premium finish. M&S Collection: easy-to-wear wardrobe staples that
+                                combine classic and contemporary styles.</p>
+                        </div>
+
+                        <button class="accordion">Details and Care</button>
+                        <div class="panel">
+                            <p>
+                                Style:Button fastening</br>
+                                Composition:62% polyester, 38% cotton (exclusive of trimmings)</br>
+                                More Details:
+                                Name and address of the manufacturer(s): PROBRIDHI APPARELS LTD KAWYA CHONNAPARA SREEPUR
+                                GAZIPUR BANGLADESH 1740</br>
+                                Country of origin: Bangladesh</br>
+                                Generic Type: Jumper</br>
+                                Pack Size: 1N</br>
+                                Net Quantity: NA
+                                MRP: Inclusive of all taxes</br>
+                            </p>
+                        </div>
+
+
+                        <script>
+                            var acc = document.getElementsByClassName("accordion");
+                            var i;
+
+                            for (i = 0; i < acc.length; i++) {
+                                acc[i].addEventListener("click", function () {
+                                    this.classList.toggle("active");
+                                    var panel = this.nextElementSibling;
+                                    if (panel.style.maxHeight) {
+                                        panel.style.maxHeight = null;
+                                    } else {
+                                        panel.style.maxHeight = panel.scrollHeight + "px";
+                                    }
+                                });
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+    </div>
+
+    <div>
+        <!-- Footer-Section HTML Code STARTS -->
+        <div class="width-100 margin-top-50 footer">
+            <div class="container2">
+                <div class="width-25">
+                    <h2 class="quicklink-heading">Web Detail</h2>
+                    <ul class="quicklink-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <!-- <li><a href="#">Search</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Checkout</a></li> -->
+                    </ul>
+                </div>
+                <!-- <div class="width-25">
+        <h2 class="quicklink-heading">Quick Link</h2>
+        <ul class="quicklink-menu">
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Change Password</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">My Whislist</a></li>
+          <li><a href="#">My Cashback</a></li>
+        </ul>
+      </div> -->
+                <div class="width-25">
+                    <h2 class="quicklink-heading">Quick Link</h2>
+                    <ul class="quicklink-menu">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <!-- <li><a href="#">Download App</a></li>
+          <li><a href="#">Refer & Earn Cashback</a></li> -->
+                    </ul>
+                </div>
+                <div class="width-25">
+                    <h2 class="quicklink-heading">GET IN TOUCH</h2>
+                    <ul class="get-in-touch">
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> E-MAIL:<a href="#"
+                                class="footer-e-mail"> info@blaryn.com</a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i> CONTACT NO.: +91 7634567890</li>
+                        <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website">
+                                https://www.Blaryn.com</a></li>
+                    </ul>
+                    <!-- <ul class="social-media">
+          <li><a href="#"><img src="images/icon-facebook.png"></a></li>
+          <li><a href="#"><img src="images/icon-twitter.png"></a></li>
+          <li><a href="#"><img src="images/icon-linkedin.png"></a></li>
+          <li><a href="#"><img src="images/icon-instagram.png"></a></li>
+        </ul> -->
+                </div>
+            </div>
+        </div>
+        <!---------- Footer-Section HTML Code Ends --------->
+        <!-- Footer-bottom Section HTML Code STARTS -->
+        <div class="width-100 footer2-bacbor">
+            <p class="footer2-content">Copyright © 2023, Blaryn.com. All Rights Reserved</p>
+        </div>
+        <!---------- Footer-bottom Section HTML Code Ends --------->
+    </div>
+</body>
+
+</html>

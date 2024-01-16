@@ -1,0 +1,172 @@
+<head>
+    <title>Blaryn- Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylecart.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<div class="shopping-cart">
+    <!-- Title -->
+    <div class="title">
+        Shopping Bag
+    </div>
+
+    <!-- Product #1 -->
+    <div class="item">
+        <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn" >
+                <img src="C:/Users/Wendy/Desktop/heart.svg">
+            </span>
+        </div>
+
+        <div class="image">
+            <img src="pic/pure white1(women).jpg" style="    width: 59;" />
+        </div>
+
+        <div class="description">
+            <span>Women</span>
+            <span>Pure Cotton V-Neck Mini Tiered Dress</span>
+            
+        </div>
+
+        <div class="quantity">
+            <button class="plus-btn" type="button" name="button">
+                -
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                +
+            </button>
+        </div>
+
+        <div class="total-price">$549</div>
+        <div class="buttons">
+            <span class="delete-btn">X</span>
+           
+        </div>
+    </div>
+
+    <!-- Product #2 -->
+    <div class="item">
+        <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn">
+                <img src="C:/Users/Wendy/Desktop/heart.svg">
+            </span>
+        </div>
+
+        <div class="image">
+            <img src="pic/Hoodie1(kids).webp" style="    width: 59;" />
+        </div>
+
+        <div class="description">
+            <span>Kids</span>
+            <span>Cotton Rich Camouflage Hoodie (6-16 Yrs)</span>
+        </div>
+
+        <div class="quantity">
+            <button class="plus-btn" type="button" name="button">
+                -
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                +
+            </button>
+        </div>
+
+        <div class="total-price">$870</div>
+        <div class="buttons">
+            <span class="delete-btn">X</span>
+           
+        </div>
+    </div>
+
+
+
+    <!-- Product #3 -->
+    <div class="item">
+        <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn">        
+                                                 
+                <img src="C:/Users/Wendy/Desktop/heart.svg">
+            </span>
+
+          
+        </div>
+
+            
+
+        <div class="image">
+            <img src ="pic/Trouser1(women).jpg" style="    width: 59;" />
+        </div>
+
+        <div class="description">
+            <span>Our Legacy</span>
+            <span>Brushed Scarf</span>
+            <span>Brown</span>
+        </div>
+
+        <div class="quantity">
+
+            <button class="plus-btn" type="button" name="button">
+                -
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+                +
+            </button>
+        </div>
+
+        <div class="total-price">$349</div>
+        <div class="buttons">
+            <span class="delete-btn">X</span>
+           
+        </div>
+
+        
+    </div>
+
+
+
+</div>
+<script>
+    $('.like-btn').on('click', function () {
+        $(this).toggleClass('is-active');
+    });
+
+    $('.minus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+
+
+        var value = parseInt($input.val()) + 1;
+        value = value < 1 ? 1 : value;
+
+
+        $input.val(value);
+        $input.change();
+        return false;
+
+        $input.val(value);
+
+    });
+
+    $('.plus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val()) - 1;
+        value = value < 1 ? 1 : value;
+
+
+        $input.val(value);
+        $input.change();
+        return false;
+
+    });
+</script>
