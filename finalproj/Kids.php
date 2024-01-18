@@ -1,7 +1,13 @@
+<?php
+session_start();
+include 'connection.php';
+?>
+
+
 <!---------- Meta HTML Starts --------->
 <html>
    <head>
-      <title>Blaryn</title>
+      <title>Blaryn Kid's Category</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="style1.css">
    </head>
@@ -15,7 +21,7 @@
 <div class="width-100 search-panel">
     <div class="container">
       <div class="width-20">
-        <a href="index1.html"><img src="pic/logo.jpg" style="height: 50; "></a>
+        <a href="index.php"><img src="pic/logo.jpg" style="height: 50; "></a>
       </div>
       <div class="width-50">
         <input class="search-textbox" type="text" Placeholder="Search for products, brand and more">
@@ -35,7 +41,7 @@
           </li>
           <li>
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <a href="cart.html">Cart (0)</a>
+            <a href="cart.php">Cart</a>
           </li>
         </ul>
       </div>
@@ -48,16 +54,16 @@
     <div class="container">
       <ul class="main-menu">
         <li>
-          <a href="index1.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Men.html">Men</a>
+          <a href="Men.php">Men</a>
         </li>
         <li>
-          <a href="Women.html">Women</a>
+          <a href="Women.php">Women</a>
         </li>
         <li>
-          <a href="Kids.html">Kids</a>
+          <a href="Kids.php">Kids</a>
         </li>
         <li>
           <a href="Accessories.html">Accessories</a>
@@ -67,19 +73,28 @@
   </div>
  
   <!-- Product-Section HTML Code STARTS -->
-  <div class="width-100 margin-top-50"> 
-     <div class="container">
-      <!-- <div class="width-25">
+<div class="width-100 margin-top-50">
+    <div class="container">
+    <?php
+
+$select_women = mysqli_query($conn, "SELECT * FROM `product_kid`");
+if (mysqli_num_rows($select_women) > 0) {
+  while ($fetch_product = mysqli_fetch_assoc($select_women)) {
+
+    ?>
+
+
+      <div class="width-25">
         <div class="product-section">
           <div class="product-border">
             <div class="product-img-center">
-              <a href="Longline(kids).html">
-                <img class="product-img" src="pic/longline(kids).webp">
+              <a href="<?php echo $fetch_product['product_link']; ?>">
+                <img class="product-img" src="<?php echo $fetch_product['product_image']; ?>">
               </a>
-            </div>
+            </div><br/>
             <div>
               <p class="product-name">
-                <a href="#">Longline Checked Shacket (6-16 Yrs)</a>
+                <a href="#"><?php echo $fetch_product['product_name']; ?></a>
               </p>
               <p class="product-rating">
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -87,101 +102,24 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
-                <span>(45)</span>
+                <span>(<?php echo $fetch_product['rating']; ?>)</span>
               </p>
               <p class="product-price">
-                <span class="product-discounted-price">Rs.1200 /-</span>
-                <span class="product-original-price">Rs.2999 /-</span>  -->
+                <span class="product-discounted-price">Rs.<?php echo $fetch_product['product_price_discount']; ?></span>
+                <span class="product-original-price">Rs.<?php echo $fetch_product['product_price_original']; ?></span>
                 <!-- <span class="product-discount">90%OFF</span> -->
-            <!-- </div>
-          </div>
-        </div>
-      </div>
-      <div class="width-25">
-        <div class="product-section">
-          <div class="product-border">
-            <div class="product-img-center">
-              <a href="Sweatshirt(kids).html">
-                <img class="product-img" src="pic/Sweatshirt(kids).webp">
-              </a>
-            </div>
-            <div>
-              <p class="product-name">
-                <a href="#">Cotton Rich Marvel™ Sweatshirt</a>
-              </p>
-              <p class="product-rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span>(5)</span>
-              </p>
-              <p class="product-price">
-                <span class="product-discounted-price">Rs.1200.00</span>
-                 <span class="product-original-price">Rs.1500</span> 
-               
-             </div>
-         </div>
-        </div> 
-      </div> -->
-      
-     <!--  <div class="width-25">
-        <div class="product-section">
-          <div class="product-border">
-            <div class="product-img-center">
-              <a href="Hoodie(kids).html">
-                <img class="product-img" src="pic\tiara.webp">
-              </a>
-            </div>
-            <div>
-              <p class="product-name">
-                <a href="#"></a>
-              </p>
-              <p class="product-rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span>(24)</span>
-              </p>
-              <p class="product-price">
-                <span class="product-discounted-price">Rs.790</span>
-                <span class="product-original-price">Rs.1999</span>
-               
             </div>
           </div>
         </div>
-      </div> -->
-      <div class="width-25">
-        <div class="product-section">
-          <div class="product-border">
-            <div class="product-img-center">
-              <a href="Textured(women).html">
-                <img class="product-img" style="width: 100%;" src="pic\tiara.webp">
-              </a>
-            </div>
-             <div>
-              <p class="product-name">
-                <a href="#">Textured Half Zip Sweatshirt</a>
-              </p>
-              </br>
-              <p class="product-rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span>(8)</span>
-              </p>
-              <p class="product-price">
-                <span class="product-discounted-price">Rs.2999.00</span>
-                
-                    </div>
-          </div>
-        </div> 
       </div>
+
+
+      <?php
+        }
+        ;
+      }
+      ;
+      ?>
       
              
     </div>
@@ -194,7 +132,7 @@
       <div class="width-25">
         <h2 class="quicklink-heading">Web Detail</h2>
         <ul class="quicklink-menu">
-          <li><a href="index1.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="AboutUs.html">About us</a></li>
           <!-- <li><a href="#">Search</a></li>
           <li><a href="#">Cart</a></li>
@@ -214,7 +152,7 @@
       <div class="width-25">
         <h2 class="quicklink-heading">Quick Link</h2>
         <ul class="quicklink-menu">
-          <li><a href="#">Login</a></li>
+          <li><a href="login.php">Login</a></li>
           <li><a href="fandq.html">Faq</a></li>
           <li><a href="ContactUs.html">Contact us</a></li>
           <!-- <li><a href="#">Download App</a></li>

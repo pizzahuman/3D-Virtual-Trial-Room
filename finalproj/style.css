@@ -1,9 +1,9 @@
 
 
 
-  .int{
+  /* .int{
   padding-top: 
-  }
+  } */
    
   .container {
     max-width: 1200px;
@@ -525,8 +525,10 @@ html {
  left: 40;
  position: absolute;
  margin-top: 10%;
+
  top: 20;
  height: 40%;
+ /* padding-bottom: 50%; */
 }
 
 /* Hide the images by default */

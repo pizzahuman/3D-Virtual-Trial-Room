@@ -77,6 +77,10 @@ html {
     width:20%;
     float:left;
 }
+.width-10 {
+  width:10%;
+  float:left;
+}
 .main-section {
     width:100%;
     float:left;
@@ -107,17 +111,21 @@ html {
   }
   .search-textbox {
     padding-left: 16px;
-    height: 40px;
-    width: 80%;
+    margin-right: 5px;
+    height: 47px;
+    width: 90%;
+    font-size: 17px;
     border: 1px solid #fff;
+    border-radius: 40px;
     float: left;
   }
   .search-button {
-    height: 42px;
+    height: 47px;
     width: 55px;
     border: none;
     background: white;
     float: left;
+    border-radius: 40px;
   }
   .search-button i {
     color: #f13f31;
