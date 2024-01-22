@@ -27,15 +27,15 @@ $user_data = check_login($conn);
 <div class="width-100 search-panel">
     <div class="container">
       <div class="width-20">
-      <a href="index1.html"><img src="pic/logo.jpg" style="height: 50; "></a>
+      <a href="index.php"><img src="pic/logo.jpg" style="height: 50; "></a>
       </div>
-      <div class="width-50">
+      <div class="width-60">
         <input class="search-textbox" type="text" Placeholder="Search for products, brand and more">
         <button class="search-button">
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="width-30">
+      <div class="width-20">
         <ul class="cart-sect">
           <!-- <li>
             <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -57,16 +57,19 @@ $user_data = check_login($conn);
     <div class="container">
       <ul class="main-menu">
         <li>
-          <a href="index1.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Men.html">Men</a>
+          <a href="allProducts.php">Products</a>
         </li>
         <li>
-          <a href="Women.html">Women</a>
+          <a href="Men.php">Men</a>
         </li>
         <li>
-          <a href="Kids.html">Kids</a>
+          <a href="Women.php">Women</a>
+        </li>
+        <li>
+          <a href="Kids.php">Kids</a>
         </li>
         <li>
           <a href="Accessories.html">Accessories</a>

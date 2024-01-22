@@ -2,23 +2,23 @@
 session_start();
 include 'connection.php';
 ?>
-
-
 <!---------- Meta HTML Starts --------->
 <html>
-   <head>
-      <title>Blaryn Women's Category</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="style1.css">
-   </head>
-   <body>
-<!---------- Meta HTML Ends --------->
 
-<!---------- Top Header HTML Code Starts --------->
+<head>
+  <title>All Products</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+  <!---------- Meta HTML Ends --------->
+
+  <!---------- Top Header HTML Code Starts --------->
 
 
   <!---------- Logo and Search Panel HTML Code Starts --------->
-<div class="width-100 search-panel">
+  <div class="width-100 search-panel">
     <div class="container">
       <div class="width-20">
         <a href="index.php"><img src="pic/logo.jpg" style="height: 50; "></a>
@@ -50,7 +50,7 @@ include 'connection.php';
   <!---------- Logo and Search Panel HTML Code Ends --------->
 
   <!---------- Main Menu HTML Code Starts --------->
-<div class="width-100">
+  <div class="width-100">
     <div class="container">
       <ul class="main-menu">
         <li>
@@ -74,68 +74,76 @@ include 'connection.php';
       </ul>
     </div>
   </div>
- 
 
- 
   <!-- Product-Section HTML Code STARTS -->
-<div class="width-100 margin-top-50">
+  <div class="width-100 margin-top-50">
     <div class="container">
-    <?php
+      <?php
 
-$select_women = mysqli_query($conn, "SELECT * FROM `product_women`");
-if (mysqli_num_rows($select_women) > 0) {
-  while ($fetch_product = mysqli_fetch_assoc($select_women)) {
+      $select_men = mysqli_query($conn, "SELECT * FROM `product_men` UNION SELECT * FROM `product_women` UNION SELECT * FROM `product_kid` ORDER BY rating DESC");
+      if (mysqli_num_rows($select_men) > 0) {
+        while ($fetch_product = mysqli_fetch_assoc($select_men)) {
 
-    ?>
-      <div class="width-25">
-        <div class="product-section">
-          <div class="product-border">
-            <div class="product-img-center">
-              <a href="womenExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
-                <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
-              </a>
-            </div><br/>
-            <div>
-              <p class="product-name">
-                <a href="#"><?php echo $fetch_product['product_name']; ?></a>
-              </p>
-              <p class="product-rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span>(<?php echo $fetch_product['rating']; ?>)</span>
-              </p>
-              <p class="product-price">
-                <span class="product-discounted-price"><?php echo $fetch_product['product_price_discount']; ?></span>
-                <span class="product-original-price"><?php echo $fetch_product['product_price_original']; ?></span>
-               
+          ?>
+
+          <div class="width-25">
+            <div class="product-section">
+              <div class="product-border">
+                <div class="product-img-center">
+                  <a href="menExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
+                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
+                  </a>
+                </div><br/>
+                <div>
+                  <p class="product-name">
+                    <a href="#">
+                      <?php echo $fetch_product['product_name']; ?>
+                    </a>
+                  </p>
+                  <p class="product-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <span>(
+                      <?php echo $fetch_product['rating']; ?>)
+                    </span>
+                  </p>
+                  <p class="product-price">
+                    <span class="product-discounted-price">
+                      <?php echo $fetch_product['product_price_discount']; ?>
+                    </span>
+                    <span class="product-original-price">
+                      <?php echo $fetch_product['product_price_original']; ?>
+                    </span>
+                    <!-- <span class="product-discount">90%OFF</span> -->
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    
-      <?php
+
+          <?php
         }
         ;
       }
       ;
       ?>
 
-             
+
+
     </div>
   </div>
   <!---------- Product-Section HTML Code Ends --------->
 
   <!-- Footer-Section HTML Code STARTS -->
-<div class="width-100 margin-top-50 footer">
+  <div class="width-100 margin-top-50 footer">
     <div class="container">
       <div class="width-25">
         <h2 class="quicklink-heading">Web Detail</h2>
         <ul class="quicklink-menu">
-          <li><a href="index1.html">Home</a></li>
-          <li><a href="AboutUs.html">About us</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
           <!-- <li><a href="#">Search</a></li>
           <li><a href="#">Cart</a></li>
           <li><a href="#">Checkout</a></li> -->
@@ -154,7 +162,7 @@ if (mysqli_num_rows($select_women) > 0) {
       <div class="width-25">
         <h2 class="quicklink-heading">Quick Link</h2>
         <ul class="quicklink-menu">
-          <li><a href="#">Login</a></li>
+          <li><a href="login.php">Login</a></li>
           <li><a href="fandq.html">Faq</a></li>
           <li><a href="ContactUs.html">Contact us</a></li>
           <!-- <li><a href="#">Download App</a></li>
@@ -164,9 +172,11 @@ if (mysqli_num_rows($select_women) > 0) {
       <div class="width-25">
         <h2 class="quicklink-heading">GET IN TOUCH</h2>
         <ul class="get-in-touch">
-          <li><i class="fa fa-envelope-o" aria-hidden="true"></i> E-MAIL:<a href="#" class="footer-e-mail"> info@blaryn.com</a></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i> E-MAIL:<a href="#" class="footer-e-mail">
+              info@blaryn.com</a></li>
           <li><i class="fa fa-fax" aria-hidden="true"></i> CONTACT NO.: +91 7634567890</li>
-          <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website"> https://www.Blaryn.com</a></li>
+          <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website">
+              https://www.Blaryn.com</a></li>
         </ul>
         <!-- <ul class="social-media">
           <li><a href="#"><img src="images/icon-facebook.png"></a></li>
@@ -179,7 +189,7 @@ if (mysqli_num_rows($select_women) > 0) {
   </div>
   <!---------- Footer-Section HTML Code Ends --------->
   <!-- Footer-bottom Section HTML Code STARTS -->
-<div class="width-100 footer2-bacbor">
+  <div class="width-100 footer2-bacbor">
     <p class="footer2-content">Copyright © 2023, Blaryn.com. All Rights Reserved</p>
   </div>
   <!---------- Footer-bottom Section HTML Code Ends --------->

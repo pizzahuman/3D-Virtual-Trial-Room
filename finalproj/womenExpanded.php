@@ -13,9 +13,9 @@ if (isset($_GET['pid'])) {
 <html>
 
 <head>
-    <title>Blaryn Men's Category</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Blaryn Women's Category</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="javat" href=" slidshow.js">
 
 </head>
@@ -88,13 +88,13 @@ if (isset($_GET['pid'])) {
 
             <?php
 
-            $select_men = mysqli_query($conn, "SELECT * FROM `product_men` WHERE product_id='" . $product_id . "'");
+            $select_men = mysqli_query($conn, "SELECT * FROM `product_women` WHERE product_id='" . $product_id . "'");
             if (mysqli_num_rows($select_men) > 0) {
                 while ($fetch_product = mysqli_fetch_assoc($select_men)) {
 
                     ?>
 
-            <!-- Left Column / Clothes Image -->
+            <!-- Left Column / Headphones Image -->
                     <div class="Column">
 
 
@@ -138,64 +138,26 @@ if (isset($_GET['pid'])) {
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            let slideIndex = 1;
-                            showSlides(slideIndex);
-
-                            // Next/previous controls
-                            function plusSlides(n) {
-                                showSlides(slideIndex += n);
-                            }
-
-                            // Thumbnail image controls
-                            function currentSlide(n) {
-                                showSlides(slideIndex = n);
-                            }
-
-                            function showSlides(n) {
-                                let i;
-                                let slides = document.getElementsByClassName("mySlides");
-                                let dots = document.getElementsByClassName("demo");
-                                let captionText = document.getElementById("caption");
-                                if (n > slides.length) { slideIndex = 1 }
-                                if (n < 1) { slideIndex = slides.length }
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                for (i = 0; i < dots.length; i++) {
-                                    dots[i].className = dots[i].className.replace(" active", "");
-                                }
-                                slides[slideIndex - 1].style.display = "block";
-                                dots[slideIndex - 1].className += " active";
-                                captionText.innerHTML = dots[slideIndex - 1].alt;
-                            }
-                        </script>
-
-
-
-
-
-
-
 
                         <!-- Right Column -->
                         <div class="right-column">
 
                             <!-- Product Description -->
                             <div class="product-description">
-                                <span>Men</span>
+                                <span>Women</span>
                                 <h1>
                                     <?php echo $fetch_product['product_name']; ?>
                                 </h1>
                             </div>
                             <!-- Product Pricing -->
                             <div class="product-price">
-                                <span class="product-original-price" style="font-size: medium;">Rs.
+                                <span class="product-original-price" style="font-size: medium;">
                                     <?php echo $fetch_product['product_price_original']; ?>
                                 </span>
-                                <span class="product-discounted-price" style="color: red;">Rs.
+                                <span class="product-discounted-price">
                                     <?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
+
                                 <a href="#" class="tryon-btn">Try On!</a>
                             </div>
                             <!-- Product Configuration -->
@@ -248,18 +210,53 @@ if (isset($_GET['pid'])) {
                                         Composition:
                                         <?php echo $fetch_product['composition']; ?></br>
                                         More Details:
-                                        <?php echo $fetch_product['address_detail']; ?></br>
+                                        <?php echo $fetch_product['address_detail']; ?><br />
                                         Generic Type:
                                         <?php echo $fetch_product['generic_type']; ?></br>
                                         Pack Size:
                                         <?php echo $fetch_product['pack_size']; ?></br>
-                                        Net Quantity: NA<br />
+                                        Net Quantity: NA
                                         MRP: Inclusive of all taxes</br>
                                     </p>
                                 </div>
 
 
                                 <script>
+                                    let slideIndex = 1;
+                                    showSlides(slideIndex);
+
+                                    // Next/previous controls
+                                    function plusSlides(n) {
+                                        showSlides(slideIndex += n);
+                                    }
+
+                                    // Thumbnail image controls
+                                    function currentSlide(n) {
+                                        showSlides(slideIndex = n);
+                                    }
+
+                                    function showSlides(n) {
+                                        let i;
+                                        let slides = document.getElementsByClassName("mySlides");
+                                        let dots = document.getElementsByClassName("demo");
+                                        let captionText = document.getElementById("caption");
+                                        if (n > slides.length) { slideIndex = 1 }
+                                        if (n < 1) { slideIndex = slides.length }
+                                        for (i = 0; i < slides.length; i++) {
+                                            slides[i].style.display = "none";
+                                        }
+                                        for (i = 0; i < dots.length; i++) {
+                                            dots[i].className = dots[i].className.replace(" active", "");
+                                        }
+                                        slides[slideIndex - 1].style.display = "block";
+                                        dots[slideIndex - 1].className += " active";
+                                        captionText.innerHTML = dots[slideIndex - 1].alt;
+                                    }
+
+
+
+
+
                                     var acc = document.getElementsByClassName("accordion");
                                     var i;
 

@@ -23,13 +23,13 @@ include 'connection.php';
       <div class="width-20">
         <a href="index.php"><img src="pic/logo.jpg" style="height: 50; "></a>
       </div>
-      <div class="width-50">
+      <div class="width-60">
         <input class="search-textbox" type="text" Placeholder="Search for products, brand and more">
         <button class="search-button">
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="width-30">
+      <div class="width-20">
         <ul class="cart-sect">
           <!-- <li>
             <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -55,6 +55,9 @@ include 'connection.php';
       <ul class="main-menu">
         <li>
           <a href="index.php">Home</a>
+        </li>
+        <li>
+          <a href="allProducts.php">Products</a>
         </li>
         <li>
           <a href="Men.php">Men</a>
@@ -88,8 +91,8 @@ if (mysqli_num_rows($select_women) > 0) {
         <div class="product-section">
           <div class="product-border">
             <div class="product-img-center">
-              <a href="<?php echo $fetch_product['product_link']; ?>">
-                <img class="product-img" src="<?php echo $fetch_product['product_image']; ?>">
+              <a href="kidExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
+                <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
               </a>
             </div><br/>
             <div>

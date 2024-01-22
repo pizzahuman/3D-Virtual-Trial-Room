@@ -56,6 +56,9 @@ include 'connection.php';
           <a href="index.php">Home</a>
         </li>
         <li>
+          <a href="allProducts.php">Products</a>
+        </li>
+        <li>
           <a href="Men.php">Men</a>
         </li>
         <li>
