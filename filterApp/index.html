@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <script src="https://unpkg.com/@tensorflow/tfjs-core@2.1.0/dist/tf-core.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.1.0/dist/tf-converter.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.1.0/dist/tf-backend-webgl.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
+
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script> 
+
+    <script src="threejs-ex.js"></script>
+    <script src="triangulation.js"></script>
+    <script src="uv-coords.js"></script>
+
+
+    <script type="text/javascript"> 
+
+      var video;
+      var model;
+      var faceMesh; 
+
+      window.onload = function() {
+        let file = document.getElementById('file');
+
+        file.addEventListener('change', loadLocalImage, false);
+        
+
+        let constraints = { video: { width: 640, height: 480 } };
+
+        navigator.mediaDevices.getUserMedia(constraints).then(
+          function(mediaStream) {
+
+            video = document.getElementById("video");
+
+            video.srcObject = mediaStream;
+
+            video.onloadedmetadata = function(e) {
+              video.play();
+
+              InitRendering();
+
+              CreateFaceObject();
+
+              StartTracking();
+            };
+          }
+        );
+      }
+      
+      
+      function loadLocalImage(e) {
+
+        let fileData = e.target.files[0];
+
+        if(!fileData.type.match('image.*')) {
+          alert('画像を選択してください');
+          return;
+        }
+
+        let reader = new FileReader();
+
+        reader.onload = function() {
+
+          var tex= new THREE.TextureLoader().load(reader.result);
+          faceMesh.material.map=tex;
+       
+        }
+
+        reader.readAsDataURL(fileData);
+      }
+      
+      function CreateFaceObject() {  
+
+        let geometry = new THREE.Geometry();
+
+        for (let i = 0; i < 468; i++) {
+          geometry.vertices.push(new THREE.Vector3(0, 0, 0));
+        }
+
+        let index,p0,p1,p2;
+        for (let i = 0; i < TRIANGULATION.length / 3; i++) {
+          index= i * 3;
+          p0 = TRIANGULATION[index];
+          p1 = TRIANGULATION[index+1];
+          p2 = TRIANGULATION[index+2];
+          geometry.faces.push(new THREE.Face3(p0,p1,p2));
+
+            geometry.faceVertexUvs[0].push([
+                    new THREE.Vector2(UV_COORDS[p0][0],1-UV_COORDS[p0][1]),
+                    new THREE.Vector2(UV_COORDS[p1][0],1-UV_COORDS[p1][1]),
+                    new THREE.Vector2(UV_COORDS[p2][0],1-UV_COORDS[p2][1])]);
+        } 
+        let texture = new THREE.TextureLoader().load( "faceMesh.jpg" );
+
+        let material = new THREE.MeshBasicMaterial( {map: texture,  alphaTest:0.1} );        
+
+        faceMesh= new THREE.Mesh( geometry, material );
+
+
+        AddToThreejs(faceMesh);       
+      }
+
+
+      function InitRendering(){
+
+        let videoWidth = video.videoWidth;
+        let videoHeight = video.videoHeight;
+        video.width = videoWidth;
+        video.height = videoHeight;
+
+        let canvas = document.getElementById("output");
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
+
+        InitThreejs(canvas);
+      }
+   
+
+      async function StartTracking(){
+
+        model = await facemesh.load();
+
+        FaceTrackingLoop();
+      }
+      
+
+      async function FaceTrackingLoop() {
+        let predictions = await model.estimateFaces(video);
+        if (predictions.length > 0) {
+
+          let keypoints = predictions[0].scaledMesh;
+
+          let geometry=faceMesh.geometry;       
+          for(let i = 0; i < keypoints.length; i++) {
+            let x = keypoints[i][0];
+            let y = keypoints[i][1];
+            geometry.vertices[i].set(x-video.width/2, -y+video.height/2, 1);  
+          }
+
+          faceMesh.geometry.verticesNeedUpdate = true;
+        }
+        RenderThreejs();
+        requestAnimationFrame(FaceTrackingLoop);  
+      }
+    </script>
+  </head>
+  
+  <body>
+    <input type="file" id="file"><br>
+    <video id="video" style="position: absolute;"></video>
+    <canvas id="output" style=" position: absolute; "></canvas>
+  </body>
+</html>
+
