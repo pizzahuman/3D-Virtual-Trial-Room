@@ -108,8 +108,8 @@ if (mysqli_num_rows($select_women) > 0) {
                 <span>(<?php echo $fetch_product['rating']; ?>)</span>
               </p>
               <p class="product-price">
-                <span class="product-discounted-price"><?php echo $fetch_product['product_price_discount']; ?></span>
-                <span class="product-original-price"><?php echo $fetch_product['product_price_original']; ?></span>
+                <span class="product-discounted-price">Rs. <?php echo $fetch_product['product_price_discount']; ?></span>
+                <span class="product-original-price">Rs. <?php echo $fetch_product['product_price_original']; ?></span>
                
             </div>
           </div>
