@@ -68,7 +68,7 @@ include 'connection.php';
           <a href="Kids.php">Kids</a>
         </li>
         <li>
-          <a href="Accessories.html">Accessories</a>
+          <a href="makeup.php">Cosmetics</a>
         </li>
       </ul>
     </div>

@@ -25,8 +25,8 @@ function InitThreejs(canvas){
   camera.position.set(0, 0, 3);
   scene.add(camera);
 
-  var light = new THREE.AmbientLight(0xffffff, 1.0);
-  scene.add(light);
+  // var light = new THREE.AmbientLight(0xffffff, 1.0);
+  // scene.add(light);
   
  
 }
