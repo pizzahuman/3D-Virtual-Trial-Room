@@ -103,16 +103,15 @@ if (mysqli_num_rows($select_cosmetic) > 0) {
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
-              <span>(
-                <?php echo $fetch_product['rating']; ?>)
+              <span>(<?php echo $fetch_product['rating']; ?>)
               </span>
             </p>
             <p class="product-price">
               <span class="product-discounted-price">
-                <?php echo $fetch_product['product_price_discount']; ?>
+                Rs. <?php echo $fetch_product['product_price_discount']; ?>
               </span>
               <span class="product-original-price">
-                <?php echo $fetch_product['product_price_original']; ?>
+                Rs. <?php echo $fetch_product['product_price_original']; ?>
               </span>
               <!-- <span class="product-discount">90%OFF</span> -->
           </div>
