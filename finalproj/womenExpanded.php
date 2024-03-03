@@ -58,24 +58,24 @@ if (isset($_GET['pid'])) {
         <div class="width-100">
             <div class="container1">
                 <ul class="main-menu">
-                    <li>
-                        <a href="index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="allProducts.php">Products</a>
-                    </li>
-                    <li>
-                        <a href="Men.php">Men</a>
-                    </li>
-                    <li>
-                        <a href="Women.php">Women</a>
-                    </li>
-                    <li>
-                        <a href="Kids.php">Kids</a>
-                    </li>
-                    <li>
-                        <a href="makeup.php">Cosmetics</a>
-                    </li>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li>
+                    <a href="allProducts.php">Products</a>
+                </li>
+                <li>
+                    <a href="makeup.php">Cosmetics</a>
+                </li>
+                <li>
+                    <a href="Men.php">Men</a>
+                </li>
+                <li>
+                    <a href="Women.php">Women</a>
+                </li>
+                <li>
+                    <a href="Kids.php">Kids</a>
+                </li>
                 </ul>
             </div>
         </div>

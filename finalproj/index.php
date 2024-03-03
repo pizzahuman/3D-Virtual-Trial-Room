@@ -59,6 +59,9 @@ include 'connection.php';
           <a href="allProducts.php">Products</a>
         </li>
         <li>
+          <a href="makeup.php">Cosmetics</a>
+        </li>
+        <li>
           <a href="Men.php">Men</a>
         </li>
         <li>
@@ -66,9 +69,6 @@ include 'connection.php';
         </li>
         <li>
           <a href="Kids.php">Kids</a>
-        </li>
-        <li>
-          <a href="makeup.php">Cosmetics</a>
         </li>
       </ul>
     </div>

@@ -60,6 +60,9 @@ include 'connection.php';
           <a href="allProducts.php">Products</a>
         </li>
         <li>
+          <a href="makeup.php">Cosmetics</a>
+        </li>
+        <li>
           <a href="Men.php">Men</a>
         </li>
         <li>
@@ -67,9 +70,6 @@ include 'connection.php';
         </li>
         <li>
           <a href="Kids.php">Kids</a>
-        </li>
-        <li>
-          <a href="makeup.php">Cosmetics</a>
         </li>
       </ul>
     </div>
@@ -93,7 +93,7 @@ include 'connection.php';
                   <a href="menExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
                     <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
                   </a>
-                </div><br/>
+                </div><br />
                 <div>
                   <p class="product-name">
                     <a href="#">

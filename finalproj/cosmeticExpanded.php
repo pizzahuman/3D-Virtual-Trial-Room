@@ -65,6 +65,9 @@ if (isset($_GET['pid'])) {
                         <a href="allProducts.php">Products</a>
                     </li>
                     <li>
+                        <a href="makeup.php">Cosmetics</a>
+                    </li>
+                    <li>
                         <a href="Men.php">Men</a>
                     </li>
                     <li>
@@ -72,9 +75,6 @@ if (isset($_GET['pid'])) {
                     </li>
                     <li>
                         <a href="Kids.php">Kids</a>
-                    </li>
-                    <li>
-                        <a href="makeup.php">Cosmetics</a>
                     </li>
                 </ul>
             </div>
@@ -160,7 +160,8 @@ if (isset($_GET['pid'])) {
                                     <?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
 
-                                <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try On!</a>
+                                <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try
+                                    On!</a>
                             </div>
                             <!-- Product Configuration -->
                             <div class="product-configuration">
@@ -168,7 +169,7 @@ if (isset($_GET['pid'])) {
 
                                 <!-- Cable Configuration -->
                                 </br>
-<!--                                 <div class="cable-config">
+                                <!--                                 <div class="cable-config">
                                     <span>Size</span>
 
                                     <div class="cable-choose">
