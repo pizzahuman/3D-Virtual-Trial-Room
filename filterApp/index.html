@@ -15,6 +15,11 @@
     <script src="triangulation.js"></script>
     <script src="uv-coords.js"></script>
 
+    <style>
+      #video-container {
+        transform: scaleX(-1); /* Horizontal flip */
+      }
+    </style>
 
     <script type="text/javascript"> 
 
@@ -150,8 +155,12 @@
   
   <body>
     <input type="file" id="file"><br>
-    <video id="video" style="position: absolute;"></video>
-    <canvas id="output" style=" position: absolute; "></canvas>
+    <div id="video-container">
+      <video id="video" style="position: absolute;"></video>
+      <canvas id="output" style=" position: absolute; "></canvas>
+    </div>
+    <!-- <video id="video" style="position: absolute;"></video> 
+    <canvas id="output" style=" position: absolute; "></canvas> -->
   </body>
 </html>
 

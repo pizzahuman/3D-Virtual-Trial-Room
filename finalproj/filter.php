@@ -30,6 +30,12 @@ if (isset($_GET['pid'])) {
   <script src="triangulation.js"></script>
   <script src="uv-coords.js"></script>
 
+  <style>
+      #video-container {
+        transform: scaleX(-1); /* Horizontal flip */
+      }
+    </style>
+
   <?php
 
   $select_filter = mysqli_query($conn, "SELECT * FROM `filters` WHERE product_id='" . $product_id . "'");
@@ -217,8 +223,10 @@ if (isset($_GET['pid'])) {
 
     <main class="container">
       <!-- <input type="file" id="file"><br> -->
+      <div id="video-container">
       <video id="video" style="position: absolute;"></video>
       <canvas id="output" style=" position: absolute; "></canvas>
+    </div>
 
     </main>
 

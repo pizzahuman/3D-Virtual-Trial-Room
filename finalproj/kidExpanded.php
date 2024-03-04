@@ -160,7 +160,7 @@ if (isset($_GET['pid'])) {
                                     <?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
 
-                                <a href="#" class="tryon-btn">Try On!</a>
+                                <!-- <a href="#" class="tryon-btn">Try On!</a> -->
                             </div>
                             <!-- Product Configuration -->
                             <div class="product-configuration">

@@ -115,10 +115,10 @@ include 'connection.php';
                   </p>
                   <p class="product-price">
                     <span class="product-discounted-price">
-                      <?php echo $fetch_product['product_price_discount']; ?>
+                      Rs.<?php echo $fetch_product['product_price_discount']; ?>
                     </span>
                     <span class="product-original-price">
-                      <?php echo $fetch_product['product_price_original']; ?>
+                      Rs.<?php echo $fetch_product['product_price_original']; ?>
                     </span>
 
                 </div>
@@ -144,7 +144,7 @@ include 'connection.php';
       <div class="width-25">
         <h2 class="quicklink-heading">Web Detail</h2>
         <ul class="quicklink-menu">
-          <li><a href="index1.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="AboutUs.html">About us</a></li>
           <!-- <li><a href="#">Search</a></li>
           <li><a href="#">Cart</a></li>

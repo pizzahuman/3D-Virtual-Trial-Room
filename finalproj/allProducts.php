@@ -80,7 +80,7 @@ include 'connection.php';
     <div class="container">
       <?php
 
-      $select_men = mysqli_query($conn, "SELECT * FROM `product_men` UNION SELECT * FROM `product_women` UNION SELECT * FROM `product_kid` ORDER BY rating DESC");
+      $select_men = mysqli_query($conn, "SELECT * FROM `product_men` UNION SELECT * FROM `product_women` UNION SELECT * FROM `product_kid` UNION SELECT * FROM `product_cosmetic` ORDER BY rating DESC");
       if (mysqli_num_rows($select_men) > 0) {
         while ($fetch_product = mysqli_fetch_assoc($select_men)) {
 
@@ -112,10 +112,10 @@ include 'connection.php';
                   </p>
                   <p class="product-price">
                     <span class="product-discounted-price">
-                      <?php echo $fetch_product['product_price_discount']; ?>
+                      Rs.<?php echo $fetch_product['product_price_discount']; ?>
                     </span>
                     <span class="product-original-price">
-                      <?php echo $fetch_product['product_price_original']; ?>
+                      Rs.<?php echo $fetch_product['product_price_original']; ?>
                     </span>
                     <!-- <span class="product-discount">90%OFF</span> -->
                 </div>

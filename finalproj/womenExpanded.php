@@ -152,13 +152,13 @@ if (isset($_GET['pid'])) {
                             <!-- Product Pricing -->
                             <div class="product-price">
                                 <span class="product-original-price" style="font-size: medium;">
-                                    <?php echo $fetch_product['product_price_original']; ?>
+                                    Rs.<?php echo $fetch_product['product_price_original']; ?>
                                 </span>
                                 <span class="product-discounted-price">
-                                    <?php echo $fetch_product['product_price_discount']; ?>
+                                    Rs.<?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
 
-                                <a href="#" class="tryon-btn">Try On!</a>
+                                <!-- <a href="#" class="tryon-btn">Try On!</a> -->
                             </div>
                             <!-- Product Configuration -->
                             <div class="product-configuration">
