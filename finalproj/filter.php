@@ -34,6 +34,9 @@ if (isset($_GET['pid'])) {
       #video-container {
         transform: scaleX(-1); /* Horizontal flip */
       }
+      .container{
+       padding-left: 20%;
+      }
     </style>
 
   <?php
@@ -221,9 +224,9 @@ if (isset($_GET['pid'])) {
   </div>
   <div>
 
-    <main class="container">
+    <main class="container" >
       <!-- <input type="file" id="file"><br> -->
-      <div id="video-container">
+      <div id="video-container" >
       <video id="video" style="position: absolute;"></video>
       <canvas id="output" style=" position: absolute; "></canvas>
     </div>

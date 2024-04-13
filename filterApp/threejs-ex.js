@@ -13,7 +13,7 @@ function InitThreejs(canvas){
   renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
-  renderer.setClearColor( 0xffffff, 0 );
+  renderer.setClearColor( 0x000000, 0 );
   camera = new THREE.OrthographicCamera(
     width / -2,
     width / 2,
@@ -27,6 +27,7 @@ function InitThreejs(canvas){
 
   // var light = new THREE.AmbientLight(0xffffff, 1.0);
   // scene.add(light);
+  scene.background = null;
   
  
 }
