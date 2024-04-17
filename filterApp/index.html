@@ -100,7 +100,7 @@
         } 
         let texture = new THREE.TextureLoader().load( "C:/xampp/htdocs/3D-Virtual-Trial-Room/filterApp/faceMesh.jpg" );
 
-        let material = new THREE.MeshBasicMaterial( {map: texture,  alphaTest:0.1} );        
+        let material = new THREE.MeshBasicMaterial( {map: texture, transparent: true, alphaTest:0} );        
 
         faceMesh= new THREE.Mesh( geometry, material );
 
