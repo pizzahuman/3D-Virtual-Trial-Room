@@ -107,7 +107,7 @@ if (isset($_GET['pid'])) {
       }
       let texture = new THREE.TextureLoader().load(imageFileToLoad);
 
-      let material = new THREE.MeshBasicMaterial({ map: texture, alphaTest: 0.1 });
+      let material = new THREE.MeshBasicMaterial({ map: texture,  transparent: true, alphaTest:0});
 
       faceMesh = new THREE.Mesh(geometry, material);
 

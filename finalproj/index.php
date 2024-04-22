@@ -202,9 +202,9 @@ include 'connection.php';
                   <div class="product-border">
                     <div class="product-img-center">
 
-                      <a href="<?php echo $fetch_product['product_link']; ?>">
-                        <img class="product-img" src="<?php echo $fetch_product['product_image']; ?>">
-                      </a>
+                      <!-- <a href="<?php echo $fetch_product['product_link']; ?>"> -->
+                        <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
+                      <!-- </a> -->
                     </div><br/>
                     <div>
                       <p class="product-name">
@@ -224,10 +224,10 @@ include 'connection.php';
                       </p>
                       <p class="product-price">
                         <span class="product-discounted-price">
-                          <?php echo $fetch_product['product_price_discount']; ?>
+                          Rs. <?php echo $fetch_product['product_price_discount']; ?>
                         </span>
                         <span class="product-original-price">
-                          <?php echo $fetch_product['product_price_original']; ?>
+                          Rs. <?php echo $fetch_product['product_price_original']; ?>
                         </span>
                     </div>
 
