@@ -31,13 +31,53 @@ if (isset($_GET['pid'])) {
   <script src="uv-coords.js"></script>
 
   <style>
-      #video-container {
-        transform: scaleX(-1); /* Horizontal flip */
+    #video-container {
+      transform: scaleX(-1);
+      /* Horizontal flip */
+    }
+
+    .container {
+      padding-left: 20%;
+    }
+
+    .loader-container {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent black */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #loader {
+      border: 12px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 12px solid pink;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+    }
+
+    .center {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
       }
-      .container{
-       padding-left: 20%;
-      }
-    </style>
+    }
+  </style>
 
   <?php
 
@@ -48,25 +88,26 @@ if (isset($_GET['pid'])) {
       ?>
 
 
-      <script type="text/javascript">
+  <script type="text/javascript">
 
-        var video;
-        var model;
-        var faceMesh;
+    var video;
+    var model;
+    var faceMesh;
 
-        window.onload = function () {
-          let fileData = '<?php echo $fetch_product['filter_link']; ?>';
-          startWebcam(fileData);
-          let textureLoader = new THREE.TextureLoader();
-          textureLoader.load(fileData, function (tex) {
-            faceMesh.material.map = tex;
-          });
-        };
+    window.onload = function () {
+      let fileData = '<?php echo $fetch_product['filter_link']; ?>';
+      startWebcam(fileData);
+      let textureLoader = new THREE.TextureLoader();
+      textureLoader.load(fileData, function (tex) {
+        faceMesh.material.map = tex;
+      });
+    };
         <?php
     }
   } ?>
     function startWebcam(imageFile) {
       let constraints = { video: { width: 640, height: 480 } };
+      document.getElementById("loader-container").style.display = "flex";
 
       navigator.mediaDevices.getUserMedia(constraints).then(
         function (mediaStream) {
@@ -107,12 +148,13 @@ if (isset($_GET['pid'])) {
       }
       let texture = new THREE.TextureLoader().load(imageFileToLoad);
 
-      let material = new THREE.MeshBasicMaterial({ map: texture,  transparent: true, alphaTest:0});
+      let material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, alphaTest: 0 });
 
       faceMesh = new THREE.Mesh(geometry, material);
 
 
       AddToThreejs(faceMesh);
+
     }
 
 
@@ -154,6 +196,7 @@ if (isset($_GET['pid'])) {
 
         faceMesh.geometry.verticesNeedUpdate = true;
       }
+      document.getElementById("loader-container").style.display = "none";
       RenderThreejs();
       requestAnimationFrame(FaceTrackingLoop);
     }
@@ -162,6 +205,9 @@ if (isset($_GET['pid'])) {
 </head>
 
 <body>
+  <div id="loader-container" class="loader-container">
+    <div id="loader" class="center"></div>
+  </div>
   <div>
     <!---------- Logo and Search Panel HTML Code Starts --------->
     <div class="width-100 search-panel">
@@ -224,12 +270,12 @@ if (isset($_GET['pid'])) {
   </div>
   <div>
 
-    <main class="container" >
+    <main class="container">
       <!-- <input type="file" id="file"><br> -->
-      <div id="video-container" >
-      <video id="video" style="position: absolute;"></video>
-      <canvas id="output" style=" position: absolute; "></canvas>
-    </div>
+      <div id="video-container">
+        <video id="video" style="position: absolute;"></video>
+        <canvas id="output" style=" position: absolute; "></canvas>
+      </div>
 
     </main>
 
@@ -237,20 +283,20 @@ if (isset($_GET['pid'])) {
 
 
   <div>
-        <!-- Footer-Section HTML Code STARTS -->
-        <div class="width-100 margin-top-50 footer">
-            <div class="container2">
-                <div class="width-25">
-                    <h2 class="quicklink-heading">Web Detail</h2>
-                    <ul class="quicklink-menu">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="AboutUs.html">About us</a></li>
-                        <!-- <li><a href="#">Search</a></li>
+    <!-- Footer-Section HTML Code STARTS -->
+    <div class="width-100 margin-top-50 footer">
+      <div class="container2">
+        <div class="width-25">
+          <h2 class="quicklink-heading">Web Detail</h2>
+          <ul class="quicklink-menu">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="AboutUs.html">About us</a></li>
+            <!-- <li><a href="#">Search</a></li>
           <li><a href="#">Cart</a></li>
           <li><a href="#">Checkout</a></li> -->
-                    </ul>
-                </div>
-                <!-- <div class="width-25">
+          </ul>
+        </div>
+        <!-- <div class="width-25">
         <h2 class="quicklink-heading">Quick Link</h2>
         <ul class="quicklink-menu">
           <li><a href="#">My Profile</a></li>
@@ -260,41 +306,41 @@ if (isset($_GET['pid'])) {
           <li><a href="#">My Cashback</a></li>
         </ul>
       </div> -->
-                <div class="width-25">
-                    <h2 class="quicklink-heading">Quick Link</h2>
-                    <ul class="quicklink-menu">
-                        <li><a href="login.php">Login</a></li>
-                        <li><a href="fandq.html">Faq</a></li>
-                        <li><a href="ContactUs.html">Contact us</a></li>
-                        <!-- <li><a href="#">Download App</a></li>
+        <div class="width-25">
+          <h2 class="quicklink-heading">Quick Link</h2>
+          <ul class="quicklink-menu">
+            <li><a href="login.php">Login</a></li>
+            <li><a href="fandq.html">Faq</a></li>
+            <li><a href="ContactUs.html">Contact us</a></li>
+            <!-- <li><a href="#">Download App</a></li>
           <li><a href="#">Refer & Earn Cashback</a></li> -->
-                    </ul>
-                </div>
-                <div class="width-25">
-                    <h2 class="quicklink-heading">GET IN TOUCH</h2>
-                    <ul class="get-in-touch">
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> E-MAIL:<a href="#"
-                                class="footer-e-mail"> info@blaryn.com</a></li>
-                        <li><i class="fa fa-fax" aria-hidden="true"></i> CONTACT NO.: +91 7634567890</li>
-                        <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website">
-                                https://www.Blaryn.com</a></li>
-                    </ul>
-                    <!-- <ul class="social-media">
+          </ul>
+        </div>
+        <div class="width-25">
+          <h2 class="quicklink-heading">GET IN TOUCH</h2>
+          <ul class="get-in-touch">
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> E-MAIL:<a href="#" class="footer-e-mail">
+                info@blaryn.com</a></li>
+            <li><i class="fa fa-fax" aria-hidden="true"></i> CONTACT NO.: +91 7634567890</li>
+            <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website">
+                https://www.Blaryn.com</a></li>
+          </ul>
+          <!-- <ul class="social-media">
           <li><a href="#"><img src="images/icon-facebook.png"></a></li>
           <li><a href="#"><img src="images/icon-twitter.png"></a></li>
           <li><a href="#"><img src="images/icon-linkedin.png"></a></li>
           <li><a href="#"><img src="images/icon-instagram.png"></a></li>
         </ul> -->
-                </div>
-            </div>
         </div>
-        <!---------- Footer-Section HTML Code Ends --------->
-        <!-- Footer-bottom Section HTML Code STARTS -->
-        <div class="width-100 footer2-bacbor">
-            <p class="footer2-content">Copyright © 2023, Blaryn.com. All Rights Reserved</p>
-        </div>
-        <!---------- Footer-bottom Section HTML Code Ends --------->
+      </div>
     </div>
+    <!---------- Footer-Section HTML Code Ends --------->
+    <!-- Footer-bottom Section HTML Code STARTS -->
+    <div class="width-100 footer2-bacbor">
+      <p class="footer2-content">Copyright © 2023, Blaryn.com. All Rights Reserved</p>
+    </div>
+    <!---------- Footer-bottom Section HTML Code Ends --------->
+  </div>
 </body>
 
 </html>

@@ -39,3 +39,24 @@ function RenderThreejs(){
 function AddToThreejs(obj){
   scene.add(obj);
 }
+
+
+/* function LoadFilter() {
+  var progress = 0;
+
+  // Update loading bar every 30 milliseconds
+  var interval = setInterval(function () {
+      progress += 1;
+      loadingBar.style.width = progress + '%';
+
+      if (progress >= 100) {
+          clearInterval(interval);
+
+          // Render the scene when the loading is complete
+          RenderThreejs();
+      }
+  }, 30);
+}
+
+// Call LoadFilter function to start loading the filter
+LoadFilter(); */

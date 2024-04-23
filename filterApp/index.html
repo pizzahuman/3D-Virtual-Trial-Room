@@ -19,6 +19,45 @@
       #video-container {
         transform: scaleX(-1); /* Horizontal flip */
       }
+
+      .loader-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2e2e2e79; /* Semi-transparent background */
+        z-index: 1;
+      }
+
+      #loader {
+          border: 12px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 12px solid #444444;
+          width: 70px;
+          height: 70px;
+          z-index: 1;
+          animation: spin 1s linear infinite;
+      }
+
+      .center {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+      }
+
+      @keyframes spin {
+          100% {
+              transform: rotate(360deg);
+          }
+      }
     </style>
 
     <script type="text/javascript"> 
@@ -146,7 +185,16 @@
           }
 
           faceMesh.geometry.verticesNeedUpdate = true;
-        }
+
+        document.getElementById("loader-container").style.visibility = "hidden";
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("video-container").style.visibility = "visible";
+    } else {
+        // Show loader if no face mesh is detected
+        document.getElementById("loader-container").style.visibility = "visible";
+        document.getElementById("loader").style.display = "block";
+        document.getElementById("video-container").style.visibility = "hidden";
+    }
         RenderThreejs();
         requestAnimationFrame(FaceTrackingLoop);  
       }
@@ -154,11 +202,13 @@
   </head>
   
   <body>
+    <div class="loader-container"><div id="loader" class="center"></div></div>
     <input type="file" id="file"><br>
     <div id="video-container">
       <video id="video" style="position: absolute;"></video>
       <canvas id="output" style=" position: absolute; "></canvas>
     </div>
+
     <!-- <video id="video" style="position: absolute;"></video> 
     <canvas id="output" style=" position: absolute; "></canvas> -->
   </body>
