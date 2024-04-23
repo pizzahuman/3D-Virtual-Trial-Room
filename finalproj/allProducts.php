@@ -80,7 +80,7 @@ include 'connection.php';
     <div class="container">
       <?php
 
-      $select_men = mysqli_query($conn, "SELECT * FROM `product_men` UNION SELECT * FROM `product_women` UNION SELECT * FROM `product_kid` UNION SELECT * FROM `product_cosmetic` ORDER BY rating DESC");
+      $select_men = mysqli_query($conn, "SELECT * FROM `products` ORDER BY rating DESC");
       if (mysqli_num_rows($select_men) > 0) {
         while ($fetch_product = mysqli_fetch_assoc($select_men)) {
 

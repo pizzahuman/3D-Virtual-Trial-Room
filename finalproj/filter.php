@@ -245,23 +245,24 @@ if (isset($_GET['pid'])) {
     <div class="width-100">
       <div class="container1">
         <ul class="main-menu">
+        <ul class="main-menu">
           <li>
-            <a href="index.php">Home</a>
+              <a href="index.php">Home</a>
           </li>
           <li>
-            <a href="allProducts.php">Products</a>
+              <a href="allProducts.php">Products</a>
           </li>
           <li>
-            <a href="makeup.php">Cosmetics</a>
+              <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
           </li>
           <li>
-            <a href="Men.php">Men</a>
+              <a href="categoryProduct.php?cat=Men">Men</a>
           </li>
           <li>
-            <a href="Women.php">Women</a>
+              <a href="categoryProduct.php?cat=Women">Women</a>
           </li>
           <li>
-            <a href="Kids.php">Kids</a>
+              <a href="categoryProduct.php?cat=Kids">Kids</a>
           </li>
         </ul>
       </div>

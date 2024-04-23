@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("connection.php");
-include("functions.php");
+include ("connection.php");
+include ("functions.php");
 
 $user_data = check_login($conn);
 
@@ -27,8 +27,8 @@ $user_data = check_login($conn);
 <body>
 
 
-       <!---------- Logo and Search Panel HTML Code Starts --------->
-       <div class="width-100 search-panel">
+    <!---------- Logo and Search Panel HTML Code Starts --------->
+    <div class="width-100 search-panel">
         <div class="container1">
             <div class="width-20">
                 <a href="index.php"><img src="pic/logo.jpg" style="height: 50; "></a>
@@ -70,26 +70,26 @@ $user_data = check_login($conn);
                     <a href="allProducts.php">Products</a>
                 </li>
                 <li>
-                    <a href="makeup.php">Cosmetics</a>
+                    <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
                 </li>
                 <li>
-                    <a href="Men.php">Men</a>
+                    <a href="categoryProduct.php?cat=Men">Men</a>
                 </li>
                 <li>
-                    <a href="Women.php">Women</a>
+                    <a href="categoryProduct.php?cat=Women">Women</a>
                 </li>
                 <li>
-                    <a href="Kids.php">Kids</a>
+                    <a href="categoryProduct.php?cat=Kids">Kids</a>
                 </li>
             </ul>
         </div>
     </div>
     <!---------- Main Menu HTML Code Ends --------->
-</div>
+    </div>
 
     <!-- cart -->
     <div class="row">
-        <div class="col-md-16 col-lg-7 small-container cart-page" >
+        <div class="col-md-16 col-lg-7 small-container cart-page">
             <!-- <div class="small-container cart-page"> -->
             <div class="title">
                 Shopping Bag
@@ -126,7 +126,7 @@ $user_data = check_login($conn);
 
                 <div class="total-price">Rs. 549</div>
                 <div class="buttons">
-                    <span class="delete-btn" >X</span>
+                    <span class="delete-btn">X</span>
 
                 </div>
             </div>
@@ -264,7 +264,7 @@ $user_data = check_login($conn);
                         <td> Subtotal</td>
                         <td>3000</td>
                     </tr>
-                    
+
                     <tr>
                         <td>Dilivery Charges</td>
                         <td>100</td>
@@ -280,9 +280,9 @@ $user_data = check_login($conn);
                 </table>
             </div>
             </br>
-            <a class="cart-button" href="payment.html" >
-                <button 
-                    style="  margin-right: 19px; height: 50px; width: 400px;color: antiquewhite; background-color: #f13f31; text-align: center;" >
+            <a class="cart-button" href="payment.html">
+                <button
+                    style="  margin-right: 19px; height: 50px; width: 400px;color: antiquewhite; background-color: #f13f31; text-align: center;">
                     Checkout
                 </button>
             </a>

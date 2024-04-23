@@ -20,7 +20,7 @@
         transform: scaleX(-1); /* Horizontal flip */
       }
 
-      .loader-container {
+    /*  .loader-container {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -30,9 +30,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #2e2e2e79; /* Semi-transparent background */
+        background-color: #2e2e2e79; // Semi-transparent background
         z-index: 1;
       }
+      */
 
       #loader {
           border: 12px solid #f3f3f3;
@@ -186,12 +187,12 @@
 
           faceMesh.geometry.verticesNeedUpdate = true;
 
-        document.getElementById("loader-container").style.visibility = "hidden";
+        // document.getElementById("loader-container").style.visibility = "hidden";
         document.getElementById("loader").style.display = "none";
         document.getElementById("video-container").style.visibility = "visible";
     } else {
         // Show loader if no face mesh is detected
-        document.getElementById("loader-container").style.visibility = "visible";
+        // document.getElementById("loader-container").style.visibility = "visible";
         document.getElementById("loader").style.display = "block";
         document.getElementById("video-container").style.visibility = "hidden";
     }
@@ -202,7 +203,9 @@
   </head>
   
   <body>
-    <div class="loader-container"><div id="loader" class="center"></div></div>
+    <!-- <div class="loader-container"> -->
+      <div id="loader" class="center"></div>
+    <!-- </div> -->
     <input type="file" id="file"><br>
     <div id="video-container">
       <video id="video" style="position: absolute;"></video>

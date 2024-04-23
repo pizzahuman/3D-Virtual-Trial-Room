@@ -59,16 +59,16 @@ include 'connection.php';
           <a href="allProducts.php">Products</a>
         </li>
         <li>
-          <a href="makeup.php">Cosmetics</a>
+          <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
         </li>
         <li>
-          <a href="Men.php">Men</a>
+          <a href="categoryProduct.php?cat=Men">Men</a>
         </li>
         <li>
-          <a href="Women.php">Women</a>
+          <a href="categoryProduct.php?cat=Women">Women</a>
         </li>
         <li>
-          <a href="Kids.php">Kids</a>
+          <a href="categoryProduct.php?cat=Kids">Kids</a>
         </li>
       </ul>
     </div>
@@ -192,7 +192,7 @@ include 'connection.php';
         <div class="container">
           <?php
 
-          $select_products = mysqli_query($conn, "SELECT * FROM `product_men` WHERE rating > 20 UNION SELECT * FROM `product_women` WHERE rating > 20 UNION SELECT * FROM `product_kid` WHERE rating > 20 LIMIT 4");
+          $select_products = mysqli_query($conn, "SELECT * FROM `products` WHERE rating > 20 LIMIT 4");
           if (mysqli_num_rows($select_products) > 0) {
             while ($fetch_product = mysqli_fetch_assoc($select_products)) {
 

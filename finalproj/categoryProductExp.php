@@ -5,7 +5,7 @@ include 'connection.php';
 if (isset($_GET['pid'])) {
     $product_id = $_GET['pid'];
 }
-;
+
 
 ?>
 
@@ -13,7 +13,7 @@ if (isset($_GET['pid'])) {
 <html>
 
 <head>
-    <title>Blaryn Cosmetic's Category</title>
+    <title>Blaryn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="javat" href=" slidshow.js">
@@ -65,16 +65,16 @@ if (isset($_GET['pid'])) {
                         <a href="allProducts.php">Products</a>
                     </li>
                     <li>
-                        <a href="makeup.php">Cosmetics</a>
+                        <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
                     </li>
                     <li>
-                        <a href="Men.php">Men</a>
+                        <a href="categoryProduct.php?cat=Men">Men</a>
                     </li>
                     <li>
-                        <a href="Women.php">Women</a>
+                        <a href="categoryProduct.php?cat=Women">Women</a>
                     </li>
                     <li>
-                        <a href="Kids.php">Kids</a>
+                        <a href="categoryProduct.php?cat=Kids">Kids</a>
                     </li>
                 </ul>
             </div>
@@ -88,9 +88,9 @@ if (isset($_GET['pid'])) {
 
             <?php
 
-            $select_cosmetic = mysqli_query($conn, "SELECT * FROM `product_cosmetic` WHERE product_id='" . $product_id . "'");
-            if (mysqli_num_rows($select_cosmetic) > 0) {
-                while ($fetch_product = mysqli_fetch_assoc($select_cosmetic)) {
+            $select_men = mysqli_query($conn, "SELECT * FROM `products` WHERE product_id='" . $product_id . "'");
+            if (mysqli_num_rows($select_men) > 0) {
+                while ($fetch_product = mysqli_fetch_assoc($select_men)) {
 
                     ?>
 
@@ -144,7 +144,7 @@ if (isset($_GET['pid'])) {
 
                             <!-- Product Description -->
                             <div class="product-description">
-                                <span>Cosmetics</span>
+                                <span><?php echo strtoupper($fetch_product['product_category']); ?></span>
                                 <h1>
                                     <?php echo $fetch_product['product_name']; ?>
                                 </h1>
@@ -160,8 +160,7 @@ if (isset($_GET['pid'])) {
                                     <?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
 
-                                <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try
-                                    On!</a>
+                                <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try On!</a>
                             </div>
                             <!-- Product Configuration -->
                             <div class="product-configuration">
@@ -169,7 +168,7 @@ if (isset($_GET['pid'])) {
 
                                 <!-- Cable Configuration -->
                                 </br>
-                                <!--                                 <div class="cable-config">
+                                <div class="cable-config">
                                     <span>Size</span>
 
                                     <div class="cable-choose">
@@ -181,7 +180,11 @@ if (isset($_GET['pid'])) {
                                         <button>XLL</button>
 
                                     </div>
-                                </div> -->
+
+
+
+
+                                </div>
 
 
                                 <a href="cart.php" class="cart-btn" style="width: 82%;text-align: center;">Add to cart</a></br>

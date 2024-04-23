@@ -1,13 +1,19 @@
 <?php
 session_start();
 include 'connection.php';
+
+if (isset($_GET['cat'])) {
+  $category = $_GET['cat'];
+}
+
 ?>
+
 
 <!---------- Meta HTML Starts --------->
 <html>
 
 <head>
-  <title>Blaryn Make-up Category</title>
+  <title>Blaryn <?php echo $category;?> Category</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style1.css">
 </head>
@@ -54,23 +60,23 @@ include 'connection.php';
   <div class="width-100">
     <div class="container">
       <ul class="main-menu">
-        <li>
+      <li>
           <a href="index.php">Home</a>
         </li>
         <li>
           <a href="allProducts.php">Products</a>
         </li>
         <li>
-          <a href="makeup.php">Cosmetics</a>
+          <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
         </li>
         <li>
-          <a href="Men.php">Men</a>
+          <a href="categoryProduct.php?cat=Men">Men</a>
         </li>
         <li>
-          <a href="Women.php">Women</a>
+          <a href="categoryProduct.php?cat=Women">Women</a>
         </li>
         <li>
-          <a href="Kids.php">Kids</a>
+          <a href="categoryProduct.php?cat=Kids">Kids</a>
         </li>
       </ul>
     </div>
@@ -79,21 +85,21 @@ include 'connection.php';
   <!-- Product-Section HTML Code STARTS -->
   <div class="width-100 margin-top-50">
     <div class="container">
-
       <?php
 
-      $select_cosmetic = mysqli_query($conn, "SELECT * FROM `product_cosmetic`");
-      if (mysqli_num_rows($select_cosmetic) > 0) {
-        while ($fetch_product = mysqli_fetch_assoc($select_cosmetic)) {
+      $select_women = mysqli_query($conn, "SELECT * FROM `products` WHERE product_category='" . $category . "'");
+      if (mysqli_num_rows($select_women) > 0) {
+        while ($fetch_product = mysqli_fetch_assoc($select_women)) {
 
           ?>
+
 
           <div class="width-25">
             <div class="product-section">
               <div class="product-border">
                 <div class="product-img-center">
-                  <a href="cosmeticExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
-                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>" style="width:100%;">
+                  <a href="categoryProductExp.php?pid=<?php echo $fetch_product['product_id']; ?>">
+                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
                   </a>
                 </div><br />
                 <div>
@@ -113,12 +119,10 @@ include 'connection.php';
                     </span>
                   </p>
                   <p class="product-price">
-                    <span class="product-discounted-price">
-                      Rs.
+                    <span class="product-discounted-price">Rs.
                       <?php echo $fetch_product['product_price_discount']; ?>
                     </span>
-                    <span class="product-original-price">
-                      Rs.
+                    <span class="product-original-price">Rs.
                       <?php echo $fetch_product['product_price_original']; ?>
                     </span>
                     <!-- <span class="product-discount">90%OFF</span> -->
@@ -126,6 +130,7 @@ include 'connection.php';
               </div>
             </div>
           </div>
+
 
           <?php
         }
@@ -145,7 +150,7 @@ include 'connection.php';
       <div class="width-25">
         <h2 class="quicklink-heading">Web Detail</h2>
         <ul class="quicklink-menu">
-          <li><a href="index1.html">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="AboutUs.html">About us</a></li>
           <!-- <li><a href="#">Search</a></li>
           <li><a href="#">Cart</a></li>
@@ -165,7 +170,7 @@ include 'connection.php';
       <div class="width-25">
         <h2 class="quicklink-heading">Quick Link</h2>
         <ul class="quicklink-menu">
-          <li><a href="#">Login</a></li>
+          <li><a href="login.php">Login</a></li>
           <li><a href="fandq.html">Faq</a></li>
           <li><a href="ContactUs.html">Contact us</a></li>
           <!-- <li><a href="#">Download App</a></li>
