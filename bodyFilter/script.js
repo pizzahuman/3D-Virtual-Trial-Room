@@ -3,7 +3,6 @@ const liveView = document.getElementById('liveView');
 const demosSection = document.getElementById('demos');
 
 // An object to configure parameters to set for the bodypix model.
-// See github docs for explanations.
 const bodyPixProperties = {
   architecture: 'MobileNetV1',
   outputStride: 16,
@@ -11,8 +10,8 @@ const bodyPixProperties = {
   quantBytes: 4
 };
 
-// An object to configure parameters for detection. I have raised
-// the segmentation threshold to 90% confidence to reduce the
+// An object to configure parameters for detection. 
+// the segmentation threshold is raised to 90% confidence to reduce the
 // number of false positives.
 const segmentationProperties = {
   flipHorizontal: true,
@@ -103,17 +102,13 @@ function processSegmentation(canvas, segmentation) {
 
 
 
-// Let's load the model with our parameters defined above.
-// Before we can use bodypix class we must wait for it to finish
-// loading. Machine Learning models can be large and take a moment to
-// get everything needed to run.
+// load the model with our parameters defined above.
 var modelHasLoaded = false;
 var model = undefined;
 
 model = bodyPix.load(bodyPixProperties).then(function (loadedModel) {
   model = loadedModel;
   modelHasLoaded = true;
-  // Show demo section now model is ready to use.
   demosSection.classList.remove('invisible');
 });
 
@@ -134,7 +129,6 @@ function predictWebcam() {
     // Copy the video frame from webcam to a tempory canvas in memory only (not in the DOM).
     videoRenderCanvasCtx.drawImage(video, 0, 0);
     previousSegmentationComplete = false;
-    // Now classify the canvas image we have available.
     model.segmentPersonParts(videoRenderCanvas, segmentationProperties).then(function(segmentation) {
       processSegmentation(webcamCanvas, segmentation);
       previousSegmentationComplete = true;

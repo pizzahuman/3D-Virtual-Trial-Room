@@ -73,6 +73,9 @@ $user_data = check_login($conn);
                     <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
                 </li>
                 <li>
+                    <a href="categoryProduct.php?cat=Accessory">Accessories</a>
+                </li>
+                <li>
                     <a href="categoryProduct.php?cat=Men">Men</a>
                 </li>
                 <li>

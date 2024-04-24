@@ -70,6 +70,9 @@ if (isset($_GET['cat'])) {
           <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
         </li>
         <li>
+          <a href="categoryProduct.php?cat=Accessory">Accessories</a>
+        </li>
+        <li>
           <a href="categoryProduct.php?cat=Men">Men</a>
         </li>
         <li>
@@ -99,7 +102,7 @@ if (isset($_GET['cat'])) {
               <div class="product-border">
                 <div class="product-img-center">
                   <a href="categoryProductExp.php?pid=<?php echo $fetch_product['product_id']; ?>">
-                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
+                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>" style="width:100%;">
                   </a>
                 </div><br />
                 <div>

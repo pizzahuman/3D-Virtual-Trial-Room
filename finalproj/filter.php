@@ -42,7 +42,6 @@ if (isset($_GET['pid'])) {
 
     .loader-container {
       background-color: rgba(0, 0, 0, 0.5);
-      /* Semi-transparent black */
       position: fixed;
       top: 0;
       left: 0;
@@ -88,20 +87,20 @@ if (isset($_GET['pid'])) {
       ?>
 
 
-  <script type="text/javascript">
+      <script type="text/javascript">
 
-    var video;
-    var model;
-    var faceMesh;
+        var video;
+        var model;
+        var faceMesh;
 
-    window.onload = function () {
-      let fileData = '<?php echo $fetch_product['filter_link']; ?>';
-      startWebcam(fileData);
-      let textureLoader = new THREE.TextureLoader();
-      textureLoader.load(fileData, function (tex) {
-        faceMesh.material.map = tex;
-      });
-    };
+        window.onload = function () {
+          let fileData = '<?php echo $fetch_product['filter_link']; ?>';
+          startWebcam(fileData);
+          let textureLoader = new THREE.TextureLoader();
+          textureLoader.load(fileData, function (tex) {
+            faceMesh.material.map = tex;
+          });
+        };
         <?php
     }
   } ?>
@@ -245,26 +244,29 @@ if (isset($_GET['pid'])) {
     <div class="width-100">
       <div class="container1">
         <ul class="main-menu">
-        <ul class="main-menu">
-          <li>
+          <ul class="main-menu">
+            <li>
               <a href="index.php">Home</a>
-          </li>
-          <li>
+            </li>
+            <li>
               <a href="allProducts.php">Products</a>
-          </li>
-          <li>
+            </li>
+            <li>
               <a href="categoryProduct.php?cat=Cosmetic">Cosmetics</a>
-          </li>
-          <li>
+            </li>
+            <li>
+              <a href="categoryProduct.php?cat=Accessory">Accessories</a>
+            </li>
+            <li>
               <a href="categoryProduct.php?cat=Men">Men</a>
-          </li>
-          <li>
+            </li>
+            <li>
               <a href="categoryProduct.php?cat=Women">Women</a>
-          </li>
-          <li>
+            </li>
+            <li>
               <a href="categoryProduct.php?cat=Kids">Kids</a>
-          </li>
-        </ul>
+            </li>
+          </ul>
       </div>
     </div>
     <!---------- Main Menu HTML Code Ends --------->
