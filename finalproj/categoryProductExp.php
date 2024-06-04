@@ -162,9 +162,16 @@ if (isset($_GET['pid'])) {
                                     Rs.
                                     <?php echo $fetch_product['product_price_discount']; ?>
                                 </span>
-
-                                <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try
-                                    On!</a>
+                                <?php if ($fetch_product['try_on'] == "Yes") {
+                                    if ($fetch_product['product_category'] == "Cosmetic" || $fetch_product['product_category'] == "Accessory") {
+                                        ?>
+                                        <a href="filter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try
+                                            On!</a>
+                                    <?php } else { ?>
+                                        <a href="bodyFilter.php?pid=<?php echo $fetch_product['product_id']; ?>" class="tryon-btn">Try
+                                            On!</a>
+                                    <?php }
+                                } ?>
                             </div>
                             <!-- Product Configuration -->
                             <div class="product-configuration">
@@ -172,38 +179,40 @@ if (isset($_GET['pid'])) {
 
                                 <!-- Cable Configuration -->
                                 </br>
-                                <div class="cable-config">
-                                    <span>Size</span>
 
-                                    <div class="cable-choose">
-                                        <button>XS</button>
-                                        <button>S</button>
-                                        <button>M</button>
-                                        <button>L</button>
-                                        <button>XL</button>
-                                        <button>XLL</button>
+                                <div class="cable-config" <?php if ($fetch_product['product_category'] == "Cosmetic" || $fetch_product['product_category'] == "Accessory")
+                                    echo "hidden" ?>>
+                                        <span>Size</span>
+
+                                        <div class="cable-choose">
+                                            <button>XS</button>
+                                            <button>S</button>
+                                            <button>M</button>
+                                            <button>L</button>
+                                            <button>XL</button>
+                                            <button>XLL</button>
+
+                                        </div>
+
+
+
 
                                     </div>
 
 
-
-
+                                    <a href="cart.php" class="cart-btn" style="width: 82%;text-align: center;">Add to cart</a></br>
                                 </div>
 
+                                <div>
+                                    </br>
 
-                                <a href="cart.php" class="cart-btn" style="width: 82%;text-align: center;">Add to cart</a></br>
-                            </div>
-
-                            <div>
-                                </br>
-
-                                <!--product descpition -->
-                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                    <!--product descpition -->
+                                    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-                                <button class="accordion">Description</button>
-                                <div class="panel">
-                                    <p>
+                                    <button class="accordion">Description</button>
+                                    <div class="panel">
+                                        <p>
                                         <?php echo $fetch_product['description']; ?>
                                     </p>
                                 </div>
@@ -303,29 +312,16 @@ if (isset($_GET['pid'])) {
                     <ul class="quicklink-menu">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="AboutUs.html">About us</a></li>
-                        <!-- <li><a href="#">Search</a></li>
-          <li><a href="#">Cart</a></li>
-          <li><a href="#">Checkout</a></li> -->
+
                     </ul>
                 </div>
-                <!-- <div class="width-25">
-        <h2 class="quicklink-heading">Quick Link</h2>
-        <ul class="quicklink-menu">
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">Change Password</a></li>
-          <li><a href="#">Order History</a></li>
-          <li><a href="#">My Whislist</a></li>
-          <li><a href="#">My Cashback</a></li>
-        </ul>
-      </div> -->
+
                 <div class="width-25">
                     <h2 class="quicklink-heading">Quick Link</h2>
                     <ul class="quicklink-menu">
                         <li><a href="login.php">Login</a></li>
                         <li><a href="fandq.html">Faq</a></li>
                         <li><a href="ContactUs.html">Contact us</a></li>
-                        <!-- <li><a href="#">Download App</a></li>
-          <li><a href="#">Refer & Earn Cashback</a></li> -->
                     </ul>
                 </div>
                 <div class="width-25">
@@ -337,12 +333,6 @@ if (isset($_GET['pid'])) {
                         <li><i class="fa fa-globe" aria-hidden="true"></i> WEBSITE:<a href="#" class="footer-website">
                                 https://www.Blaryn.com</a></li>
                     </ul>
-                    <!-- <ul class="social-media">
-          <li><a href="#"><img src="images/icon-facebook.png"></a></li>
-          <li><a href="#"><img src="images/icon-twitter.png"></a></li>
-          <li><a href="#"><img src="images/icon-linkedin.png"></a></li>
-          <li><a href="#"><img src="images/icon-instagram.png"></a></li>
-        </ul> -->
                 </div>
             </div>
         </div>

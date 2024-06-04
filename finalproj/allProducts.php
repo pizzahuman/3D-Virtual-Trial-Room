@@ -94,7 +94,7 @@ include 'connection.php';
               <div class="product-border">
                 <div class="product-img-center">
                   <a href="menExpanded.php?pid=<?php echo $fetch_product['product_id']; ?>">
-                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
+                    <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>" style="width:100%;">
                   </a>
                 </div><br/>
                 <div>

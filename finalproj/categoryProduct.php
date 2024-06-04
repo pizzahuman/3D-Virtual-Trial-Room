@@ -117,8 +117,7 @@ if (isset($_GET['cat'])) {
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <span>(
-                      <?php echo $fetch_product['rating']; ?>)
+                    <span>(<?php echo $fetch_product['rating']; ?>)
                     </span>
                   </p>
                   <p class="product-price">
