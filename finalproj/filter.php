@@ -80,12 +80,19 @@ if ($product_id) {
     .filter-buttons {
       text-align: center;
       margin-top: 20px;
+      position: absolute;
+      bottom: 70px;
+      margin-left: 680px;
+     /* padding: 50px; */
     }
 
     .filter-buttons button {
-      margin: 5px;
-      padding: 10px 20px;
+      margin-top: 60;
+        padding: 10px 20px;
+        margin-right: 15px;
       font-size: 16px;
+      background-color: red;
+     
     }
   </style>
 
@@ -155,7 +162,10 @@ if ($product_id) {
         <canvas id="output" style="position: absolute;"></canvas>
       </div>
 
-      <div class="filter-buttons" id="filter-buttons">
+    </main>
+
+    
+    <div class="filter-buttons" id="filter-buttons" >
         
         <?php foreach ($filter_types as $filter): ?>
           <button onclick="changeFilter('<?php echo $filter['filter_link']; ?>')">
@@ -163,7 +173,6 @@ if ($product_id) {
           </button>
         <?php endforeach; ?>
       </div>
-    </main>
   </div>
   <div id="loader-container" class="loader-container" style="display: none;">
     <div id="loader" class="center"></div>

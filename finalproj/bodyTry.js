@@ -1,6 +1,7 @@
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 const demosSection = document.getElementById('demos');
+const loaderContainer = document.getElementById('loader-container');
 
 // An object to configure parameters to set for the bodypix model.
 const bodyPixProperties = {
@@ -11,75 +12,45 @@ const bodyPixProperties = {
 };
 
 // An object to configure parameters for detection. 
-// the segmentation threshold is raised to 90% confidence to reduce the
-// number of false positives.
 const segmentationProperties = {
   flipHorizontal: true,
   internalResolution: 'high',
   segmentationThreshold: 0.9
 };
 
-
 // This array will hold the colours we wish to use to highlight different body parts we find.
-// RGBA (Red, Green, Blue, and Alpha (transparency) channels can be specified).
-const colourMap = [];
-
-// Left_face
-colourMap.push({r: 244, g: 67, b: 54, a: 0});
-// Right_face
-colourMap.push({r: 183, g: 28, b: 28, a: 0});
-// left_upper_arm_front
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// left_upper_arm_back  
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// right_upper_arm_front
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// 	right_upper_arm_back
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// 	left_lower_arm_front
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// 	left_lower_arm_back
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// right_lower_arm_front
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// right_lower_arm_back
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// left_hand 
-colourMap.push({r: 156, g: 39, b: 176, a: 0});
-// right_hand
-colourMap.push({r: 156, g: 39, b: 176, a: 0});
-// torso_front
-colourMap.push({r: 0, g: 0, b: 0, a: 255}); 
-// torso_back 
-colourMap.push({r: 0, g: 0, b: 0, a: 255});
-// left_upper_leg_front
-colourMap.push({r: 33, g: 150, b: 243, a: 0});
-// left_upper_leg_back
-colourMap.push({r: 13, g: 71, b: 161, a: 0});
-// right_upper_leg_front
-colourMap.push({r: 33, g: 150, b: 243, a: 0});
-// right_upper_leg_back
-colourMap.push({r: 13, g: 71, b: 161, a: 0});
-// left_lower_leg_front
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
-// left_lower_leg_back
-colourMap.push({r: 0, g: 96, b: 100, a: 0});
-// right_lower_leg_front
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
-// right_lower_leg_back
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
-// left_feet
-colourMap.push({r: 255, g: 193, b: 7, a: 0});
-// right_feet
-colourMap.push({r: 255, g: 193, b: 7, a: 0});
-
+const colourMap = [
+  {r: 244, g: 67, b: 54, a: 0}, // Left_face
+  {r: 183, g: 28, b: 28, a: 0}, // Right_face
+  {r: 0, g: 0, b: 0, a: 255}, // left_upper_arm_front
+  {r: 0, g: 0, b: 0, a: 255}, // left_upper_arm_back
+  {r: 0, g: 0, b: 0, a: 255}, // right_upper_arm_front
+  {r: 0, g: 0, b: 0, a: 255}, // right_upper_arm_back
+  {r: 0, g: 0, b: 0, a: 255}, // left_lower_arm_front
+  {r: 0, g: 0, b: 0, a: 255}, // left_lower_arm_back
+  {r: 0, g: 0, b: 0, a: 255}, // right_lower_arm_front
+  {r: 0, g: 0, b: 0, a: 255}, // right_lower_arm_back
+  {r: 156, g: 39, b: 176, a: 0}, // left_hand
+  {r: 156, g: 39, b: 176, a: 0}, // right_hand
+  {r: 0, g: 0, b: 0, a: 255}, // torso_front
+  {r: 0, g: 0, b: 0, a: 255}, // torso_back
+  {r: 33, g: 150, b: 243, a: 0}, // left_upper_leg_front
+  {r: 13, g: 71, b: 161, a: 0}, // left_upper_leg_back
+  {r: 33, g: 150, b: 243, a: 0}, // right_upper_leg_front
+  {r: 13, g: 71, b: 161, a: 0}, // right_upper_leg_back
+  {r: 0, g: 188, b: 212, a: 0}, // left_lower_leg_front
+  {r: 0, g: 96, b: 100, a: 0}, // left_lower_leg_back
+  {r: 0, g: 188, b: 212, a: 0}, // right_lower_leg_front
+  {r: 0, g: 96, b: 100, a: 0}, // right_lower_leg_back
+  {r: 255, g: 193, b: 7, a: 0}, // left_feet
+  {r: 255, g: 193, b: 7, a: 0} // right_feet
+];
 
 // A function to render returned segmentation data to a given canvas context.
 function processSegmentation(canvas, segmentation) {
-  var ctx = canvas.getContext('2d');
-  
-  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  var data = imageData.data;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
   
   let n = 0;
   for (let i = 0; i < data.length; i += 4) {
@@ -100,33 +71,34 @@ function processSegmentation(canvas, segmentation) {
   ctx.putImageData(imageData, 0, 0);
 }
 
-
-
 // load the model with our parameters defined above.
-var modelHasLoaded = false;
-var model = undefined;
+let modelHasLoaded = false;
+let model = undefined;
 document.getElementById("loader-container").style.display = "flex";
 model = bodyPix.load(bodyPixProperties).then(function (loadedModel) {
   model = loadedModel;
   modelHasLoaded = true;
+  // Show demos section when model is loaded.
   demosSection.classList.remove('invisible');
+
+  // Show loader until model is fully loaded.
+  loaderContainer.style.display = 'flex';
+
+  enableCam();
 });
 
 document.getElementById("loader-container").style.display = "none";
-var previousSegmentationComplete = true;
+let previousSegmentationComplete = true;
 
 // Check if webcam access is supported.
 function hasGetUserMedia() {
-  return !!(navigator.mediaDevices &&
-    navigator.mediaDevices.getUserMedia);
+  return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 }
 
-
-// This function will repeatidly call itself when the browser is ready to process
-// the next frame from webcam.
+// This function will repeatedly call itself when the browser is ready to process the next frame from the webcam.
 function predictWebcam() {
   if (previousSegmentationComplete) {
-    // Copy the video frame from webcam to a tempory canvas in memory only (not in the DOM).
+    // Copy the video frame from webcam to a temporary canvas in memory only (not in the DOM).
     videoRenderCanvasCtx.drawImage(video, 0, 0);
     previousSegmentationComplete = false;
     model.segmentPersonParts(videoRenderCanvas, segmentationProperties).then(function(segmentation) {
@@ -134,20 +106,15 @@ function predictWebcam() {
       previousSegmentationComplete = true;
     });
   }
-
   // Call this function again to keep predicting when the browser is ready.
   window.requestAnimationFrame(predictWebcam);
 }
 
-
 // Enable the live webcam view and start classification.
-function enableCam(event) {
+function enableCam() {
   if (!modelHasLoaded) {
     return;
   }
-  
-  // Hide the button.
-  event.target.classList.add('removed');  
   
   // getUsermedia parameters.
   const constraints = {
@@ -157,9 +124,7 @@ function enableCam(event) {
   // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     video.addEventListener('loadedmetadata', function() {
-      // Update widths and heights once video is successfully played otherwise
-      // it will have width and height of zero initially causing classification
-      // to fail.
+      // Update widths and heights once video is successfully played otherwise it will have width and height of zero initially causing classification to fail.
       webcamCanvas.width = video.videoWidth;
       webcamCanvas.height = video.videoHeight;
       videoRenderCanvas.width = video.videoWidth;
@@ -167,27 +132,25 @@ function enableCam(event) {
     });
     
     video.srcObject = stream;
-    
     video.addEventListener('loadeddata', predictWebcam);
+    
+    // Hide loader once webcam starts.
+    loaderContainer.style.display = 'none';
   });
 }
 
-
-// Lets create a canvas to render our findings to the DOM.
-var webcamCanvas = document.createElement('canvas');
+// Create a canvas to render our findings to the DOM.
+const webcamCanvas = document.createElement('canvas');
 webcamCanvas.setAttribute('class', 'overlay');
 liveView.appendChild(webcamCanvas);
 
-// We will also create a tempory canvas to render to that is in memory only
-// to store frames from the web cam stream for classification.
-var videoRenderCanvas = document.createElement('canvas');
-var videoRenderCanvasCtx = videoRenderCanvas.getContext('2d');
+// Create a temporary canvas to render to that is in memory only to store frames from the webcam stream for classification.
+const videoRenderCanvas = document.createElement('canvas');
+const videoRenderCanvasCtx = videoRenderCanvas.getContext('2d');
 
-// If webcam supported, add event listener to button for when user
-// wants to activate it.
+// If webcam supported, enable the camera directly.
 if (hasGetUserMedia()) {
-  const enableWebcamButton = document.getElementById('webcamButton');
-  enableWebcamButton.addEventListener('click', enableCam);
+  window.addEventListener('load', enableCam);
 } else {
   console.warn('getUserMedia() is not supported by your browser');
 }

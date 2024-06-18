@@ -1,10 +1,10 @@
-body {
+/* body {
     font-family: helvetica, arial, sans-serif;
-   /* margin: 2em; */
+    margin: 2em; 
     color: #3D3D3D;
   }
   
-/*   h1 {
+  h1 {
     font-style: italic;
     color: #FF6F00;
   }
@@ -21,11 +21,14 @@ body {
     clear: both;
     display: block;
     transform: scaleX(-1);
+   
   }
   
   section {
     opacity: 1;
     transition: opacity 500ms ease-in-out;
+   
+    
   }
   
 /*   header, footer {
@@ -47,6 +50,7 @@ body {
   
   .webcam {
     position: relative;
+    
   }
   
   .webcam {
@@ -55,6 +59,8 @@ body {
     width: 48%;
     margin: 2% 1%;
     cursor: pointer;
+   /* margin-left: 280%; */
+  
   }
   
  .webcam canvas.overlay {
@@ -101,4 +107,10 @@ body {
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  .try{
+    /* padding: 10%; */
+    padding-bottom: 31.7%;
+    padding-left: 30%;
   }

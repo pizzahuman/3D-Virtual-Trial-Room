@@ -184,7 +184,7 @@
             let y = keypoints[i][1];
             geometry.vertices[i].set(x-video.width/2, -y+video.height/2, 1);  
           }
-
+console.log(geometry);
           faceMesh.geometry.verticesNeedUpdate = true;
 
         // document.getElementById("loader-container").style.visibility = "hidden";
