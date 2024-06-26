@@ -81,18 +81,22 @@ if ($product_id) {
       text-align: center;
       margin-top: 20px;
       position: absolute;
-      bottom: 70px;
+      bottom: 1px;
       margin-left: 680px;
      /* padding: 50px; */
+    
     }
 
     .filter-buttons button {
-      margin-top: 60;
-        padding: 10px 20px;
-        margin-right: 15px;
-      font-size: 16px;
-      background-color: red;
-     
+      padding: 5px 5px;
+      margin-right: 20px;
+      font-size: 12px;
+      color: white;
+      background-color: white;
+      border: 2px solid palevioletred;
+      border-radius: 70%;
+      width: 60px;
+      height: 52px;
     }
   </style>
 
@@ -168,7 +172,7 @@ if ($product_id) {
     <div class="filter-buttons" id="filter-buttons" >
         
         <?php foreach ($filter_types as $filter): ?>
-          <button onclick="changeFilter('<?php echo $filter['filter_link']; ?>')">
+          <button onclick="changeFilter('<?php echo $filter['filter_link']; ?>')" style="background-color: #<?php echo $filter['filter_color']; ?>">
             <?php echo $filter['filter_name']; ?>
           </button>
         <?php endforeach; ?>
