@@ -9,7 +9,7 @@ include 'connection.php';
 <head>
   <title>Blaryn</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style1.css?v=1">
 </head>
 
 <body>
@@ -183,7 +183,13 @@ include 'connection.php';
           </a>
         </div>
       </div>
+      </br>
 
+      <div class="color-try">
+        <span class="color-tryspan">Confused about which colors suit you?</span>
+        <button><a href="colorTryOn.html">Try-on!</a></button>
+      </div>
+      </br>
       <div>
         </br>
         <h1>.....Feartured Product.....</h1>
@@ -205,9 +211,9 @@ include 'connection.php';
                   <div class="product-border">
                     <div class="product-img-center">
 
-                      <!-- <a href="<?php echo $fetch_product['product_link']; ?>"> -->
+                      <a href="categoryProductExp.php?pid=<?php echo $fetch_product['product_id']; ?>">
                         <img class="product-img" src="<?php echo $fetch_product['product_image_1']; ?>">
-                      <!-- </a> -->
+                      </a>
                     </div><br/>
                     <div>
                       <p class="product-name">

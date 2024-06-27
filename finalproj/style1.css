@@ -403,3 +403,41 @@ bit see-through */
   font-size: 30px;
   text-align: center;
 }
+
+.color-try {
+  display: flex;
+  padding: 20px 20px;
+  background-image: linear-gradient(to right, #232f3e, #fae1d8);
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.color-try .color-tryspan {
+  font-size: 28px;
+  padding: 10px 10px;
+}
+
+.color-try button {
+  background-color: #232f3e;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+
+.color-try button a{
+  text-decoration: none;
+  color: white;
+}
+
+.color-try button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
