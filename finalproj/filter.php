@@ -38,6 +38,9 @@ if ($product_id) {
 
     .container {
       padding-left: 20%;
+      padding-bottom: 0%;
+      margin-bottom: 40%;
+      /* padding-top: 12%; */
     }
 
     .loader-container {
@@ -81,14 +84,14 @@ if ($product_id) {
       text-align: center;
       margin-top: 20px;
       position: absolute;
-      bottom: 1px;
+      bottom: 6px;
       margin-left: 680px;
-     /* padding: 50px; */
-    
+     padding: 50px;
+     padding-top: 0px;
     }
 
     .filter-buttons button {
-      padding: 5px 5px;
+      /* padding: 5px 5px; */
       margin-right: 20px;
       font-size: 12px;
       color: white;
@@ -97,6 +100,12 @@ if ($product_id) {
       border-radius: 70%;
       width: 60px;
       height: 52px;
+    }
+
+    .changes{
+      /* margin-bottom: 3px;
+       */
+       padding-bottom: 3px;
     }
   </style>
 
@@ -159,9 +168,10 @@ if ($product_id) {
       </div>
     </div>
   </div>
+  <div class="changes">
   <div>
-    <main class="container">
-      <div id="video-container">
+    <main class="container" >
+      <div id="video-container" >
         <video id="video" style="position: absolute;"></video>
         <canvas id="output" style="position: absolute;"></canvas>
       </div>
@@ -181,8 +191,9 @@ if ($product_id) {
   <div id="loader-container" class="loader-container" style="display: none;">
     <div id="loader" class="center"></div>
   </div>
+  </div>
 
-  <div class="width-100 margin-top-50 footer">
+  <div class="width-100 margin-top-50 footer" >
     <div class="container2">
       <div class="width-25">
         <h2 class="quicklink-heading">Web Detail</h2>

@@ -9,9 +9,8 @@ const bodyPixProperties = {
   quantBytes: 4
 };
 
-
 const segmentationProperties = {
-  flipHorizontal: true,
+  flipHorizontal: true, // Flip the segmentation to match the flipped video
   internalResolution: 'high',
   segmentationThreshold: 0.9
 };
@@ -47,21 +46,21 @@ colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // torso_back 
 colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // left_upper_leg_front
-colourMap.push({r: 33, g: 150, b: 243, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // left_upper_leg_back
-colourMap.push({r: 13, g: 71, b: 161, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // right_upper_leg_front
-colourMap.push({r: 33, g: 150, b: 243, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // right_upper_leg_back
-colourMap.push({r: 13, g: 71, b: 161, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // left_lower_leg_front
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // left_lower_leg_back
-colourMap.push({r: 0, g: 96, b: 100, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // right_lower_leg_front
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // right_lower_leg_back
-colourMap.push({r: 0, g: 188, b: 212, a: 0});
+colourMap.push({r: 136, g: 14, b: 79, a: 255});
 // left_feet
 colourMap.push({r: 255, g: 193, b: 7, a: 0});
 // right_feet
@@ -88,7 +87,8 @@ colorPicker.addEventListener('input', (event) => {
 });
 
 function processSegmentation(canvas, segmentation) {
-  var ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
   
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   var data = imageData.data;
